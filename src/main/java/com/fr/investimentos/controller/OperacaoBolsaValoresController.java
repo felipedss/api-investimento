@@ -2,16 +2,15 @@ package com.fr.investimentos.controller;
 
 import com.fr.investimentos.model.OperacaoBolsaValores;
 import com.fr.investimentos.repository.BasicRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 @RequestMapping("operacao-bolsa-valores")
 public class OperacaoBolsaValoresController {
 
-    @AutoWired
+    @Autowired
     private BasicRepository repository;
 
     @PostMapping
