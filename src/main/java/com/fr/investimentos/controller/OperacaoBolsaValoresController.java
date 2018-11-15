@@ -5,13 +5,13 @@ import com.fr.investimentos.repository.BasicRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.inject.Inject;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 @RequestMapping("operacao-bolsa-valores")
 public class OperacaoBolsaValoresController {
 
-    @Inject
+    @AutoWired
     private BasicRepository repository;
 
     @PostMapping
