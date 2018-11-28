@@ -1,16 +1,16 @@
 package com.fr.investimentos.feign;
 
-import lombok.Getter;
-import org.springframework.stereotype.Component;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
-@Getter
-@Component
-public class YahooFinanceFeignClient extends FeignClient {
+import java.util.LinkedHashMap;
 
-    private static String URL = "https://query1.finance.yahoo.com/v10/finance/";
+@FeignClient(name = "yahooFinanceFeign", url = "https://query1.finance.yahoo.com/v10/finance/")
+public interface YahooFinanceFeignClient {
 
-    public YahooFinanceClient callFeignClient() {
-        return createClient(YahooFinanceClient.class, URL);
-    }
+    @GetMapping("/quoteSummary/{symbol}?formatted=true&modules=price%2CsummaryDetail")
+    LinkedHashMap get(@PathVariable("symbol") String symbol);
 
 }
+

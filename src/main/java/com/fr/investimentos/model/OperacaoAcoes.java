@@ -6,8 +6,8 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
-@Document(collection = "operacoesBolsaValores")
-public class OperacaoBolsaValores extends Operacao {
+@Document(collection = "operacoesAcoes")
+public class OperacaoAcoes extends Operacao {
 
     @NotNull(message = "A quantidade deve ser informada")
     @Field("quantidade")

@@ -17,7 +17,7 @@ public class CotacaoController {
 
     @GetMapping(path = "{symbol}")
     public ResponseEntity findBySymbol(@PathVariable("symbol") String symbol) {
-        return ResponseEntity.ok(feignClient.callFeignClient().findBySymbol(symbol));
+        return ResponseEntity.ok(feignClient.get(symbol));
     }
 
 }

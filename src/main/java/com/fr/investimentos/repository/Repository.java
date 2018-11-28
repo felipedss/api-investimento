@@ -15,6 +15,8 @@ public interface Repository {
 
     <T> void remove(T entity);
 
+    <T> void remove(Class<T> entityClass, Serializable id);
+
     <T> Page<T> findAllWithPage(Class<T> entityClass, Pageable pageable, Predicate... where);
 
     <T> Collection<T> findAll(Class<T> entityClass, Predicate... where);

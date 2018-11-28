@@ -38,6 +38,13 @@ public class BasicRepository implements Repository {
     }
 
     @Override
+    public <T> void remove(Class<T> entityClass, Serializable id) {
+        Objects.requireNonNull(entityClass);
+        Objects.requireNonNull(id);
+        template.remove(find(entityClass, id));
+    }
+
+    @Override
     public <T> Page<T> findAllWithPage(Class<T> entityClass, Pageable pageable, Predicate... where) {
         //TODO IMPLEMENTAR
         return null;
