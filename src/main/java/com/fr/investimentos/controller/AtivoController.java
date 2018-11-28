@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Comparator;
-import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
@@ -29,18 +28,6 @@ public class AtivoController {
         return ResponseEntity.ok(repository.findAll(Ativo.class));
     }
 
-    @GetMapping("ranking")
-    public ResponseEntity findRanking() {
-
-        final List<Ativo> ranking = repository.findAll(Ativo.class)
-                .stream()
-                .sorted(Comparator.comparing(Ativo::getScore).reversed())
-                .collect(Collectors.toList());
-
-        return ResponseEntity.ok(ranking);
-    }
-
-
     @DeleteMapping(path = "{id}")
     public ResponseEntity delete(@PathVariable("id") String id) {
         repository.remove(Ativo.class, id);
@@ -53,4 +40,11 @@ public class AtivoController {
         return ResponseEntity.ok(ativo);
     }
 
+    @GetMapping("ranking")
+    public ResponseEntity findRanking() {
+        return ResponseEntity.ok(repository.findAll(Ativo.class)
+                .stream()
+                .sorted(Comparator.comparing(Ativo::getScore).reversed())
+                .collect(Collectors.toList()));
+    }
 }

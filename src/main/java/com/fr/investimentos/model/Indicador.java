@@ -1,5 +1,6 @@
 package com.fr.investimentos.model;
 
+import com.fr.investimentos.enterprise.Constants;
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -21,5 +22,10 @@ public class Indicador {
 
     @Field("payout")
     private Double payout;
+
+    public Double getScorePrecoLucro() {
+        return Constants.HUNDRED - precoLucro;
+    }
+
 
 }

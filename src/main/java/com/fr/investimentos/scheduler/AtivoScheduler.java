@@ -12,9 +12,9 @@ public class AtivoScheduler {
     private Repository repository;
 
     @Scheduled(fixedDelay = 15000)
-    public void scheduleFixedDelayTask() {
-        //TODO IMPLEMENTAR
-
+    public void ativoTask() {
+        //TODO Implementar
     }
+
 
 }
