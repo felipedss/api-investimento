@@ -7,6 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Controller
 @RequestMapping("ativo")
 public class AtivoController {
@@ -24,6 +28,18 @@ public class AtivoController {
     public ResponseEntity findAll() {
         return ResponseEntity.ok(repository.findAll(Ativo.class));
     }
+
+    @GetMapping("ranking")
+    public ResponseEntity findRanking() {
+
+        final List<Ativo> ranking = repository.findAll(Ativo.class)
+                .stream()
+                .sorted(Comparator.comparing(Ativo::getScore).reversed())
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(ranking);
+    }
+
 
     @DeleteMapping(path = "{id}")
     public ResponseEntity delete(@PathVariable("id") String id) {

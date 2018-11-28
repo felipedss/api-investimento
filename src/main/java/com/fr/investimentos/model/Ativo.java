@@ -32,6 +32,10 @@ public class Ativo {
     @Field("demonstrativoResultados")
     private Collection<DemonstrativoResultado> demonstrativoResultados;
 
+    @Field("score")
+    private Double score;
 
+    @Field("setor")
+    private Setor setor;
 
 }
